@@ -27,7 +27,7 @@ VALIDATE(){
 rm -fr mongo.repo
 echo "[mongodb-org-4.2]" >> mongo.repo
 echo "name=MongoDB Repository" >> mongo.repo
-echo "baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/" >> mongo.repo
+echo "baseurl=https://repo.mongodb.org/yum/redhat/^$releasever/mongodb-org/4.2/x86_64/" >> mongo.repo
 echo "gpgcheck=0" >> mongo.repo
 echo "enabled=1" >> mongo.repo
 
