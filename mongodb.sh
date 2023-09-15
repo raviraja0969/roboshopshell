@@ -24,12 +24,12 @@ VALIDATE(){
         echo -e "$2 ... $G SUCCESS $N"
     fi
 }
-rm -fr mongo.repo
-echo "[mongodb-org-4.2]" >> mongo.repo
-echo "name=MongoDB Repository" >> mongo.repo
-echo "baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/4.2/x86_64/" >> mongo.repo
-echo "gpgcheck=0" >> mongo.repo
-echo "enabled=1" >> mongo.repo
+rm -fr /etc/yum.repos.d/mongo.repo
+echo "[mongodb-org-4.2]" >> /etc/yum.repos.d/mongo.repo
+echo "name=MongoDB Repository" >> /etc/yum.repos.d/mongo.repo
+echo "baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/4.2/x86_64/" >> /etc/yum.repos.d/mongo.repo
+echo "gpgcheck=0" >> /etc/yum.repos.d/mongo.repo
+echo "enabled=1" >> /etc/yum.repos.d/mongo.repo
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 
