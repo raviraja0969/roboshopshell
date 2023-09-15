@@ -26,3 +26,4 @@ VALIDATE(){
 }
 
 echo "[mongodb-org-4.2]" > mongo.repo
+echo "name=MongoDB Repository" > mongo.repo
