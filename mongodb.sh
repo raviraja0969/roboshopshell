@@ -24,3 +24,5 @@ VALIDATE(){
         echo -e "$2 ... $G SUCCESS $N"
     fi
 }
+
+echo "[mongodb-org-4.2]" > mongo.repo
