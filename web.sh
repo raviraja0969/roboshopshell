@@ -63,7 +63,7 @@ echo "proxy_http_version 1.1;" >> /etc/nginx/default.d/roboshop.conf
 echo "location /images/ {" >> /etc/nginx/default.d/roboshop.conf
 echo "   expires 5s;" >> /etc/nginx/default.d/roboshop.conf
 echo "   root   /usr/share/nginx/html;" >> /etc/nginx/default.d/roboshop.conf
-echo "   try_files $uri /images/placeholder.jpg;" >> /etc/nginx/default.d/roboshop.conf
+echo "   try_files \$uri /images/placeholder.jpg;" >> /etc/nginx/default.d/roboshop.conf
 echo "}" >> /etc/nginx/default.d/roboshop.conf
 echo "location /api/catalogue/ { proxy_pass http://catalogue.ravistarfuture.online:8080/; }" >> /etc/nginx/default.d/roboshop.conf
 echo "location /api/user/ { proxy_pass http://user.ravistarfuture.online:8080/; }" >> /etc/nginx/default.d/roboshop.conf
