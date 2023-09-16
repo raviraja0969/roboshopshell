@@ -73,7 +73,6 @@ echo "Environment=CATALOGUE_PORT=8080" >> /etc/systemd/system/cart.service
 echo "ExecStart=/bin/node /app/server.js" >> /etc/systemd/system/cart.service
 
 echo "SyslogIdentifier=cart" >> /etc/systemd/system/cart.service
-echo "ExecStart=/bin/node /app/server.js" >> /etc/systemd/system/cart.service
 echo "[Install]" >> /etc/systemd/system/cart.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/cart.service
 
