@@ -73,11 +73,36 @@ echo "SyslogIdentifier=user" >> /etc/systemd/system/user.service
 echo "[Install]" >> /etc/systemd/system/user.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/user.service
 
+VALIDATE $? "copying user.service"
 
+systemctl daemon-reload &>>$LOGFILE
 
+VALIDATE $? "daemon reload"
 
+systemctl enable user &>>$LOGFILE
 
+VALIDATE $? "Enabling user"
 
+systemctl start user &>>$LOGFILE
+
+VALIDATE $? "Starting user"
+
+rm -fr /etc/yum.repos.d/mongo.repo
+echo "[mongodb-org-4.2]" >> /etc/yum.repos.d/mongo.repo
+echo "name=MongoDB Repository" >> /etc/yum.repos.d/mongo.repo
+echo "baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/4.2/x86_64/" >> /etc/yum.repos.d/mongo.repo
+echo "gpgcheck=0" >> /etc/yum.repos.d/mongo.repo
+echo "enabled=1" >> /etc/yum.repos.d/mongo.repo
+
+VALIDATE $? "Copying mongo repo"
+
+yum install mongodb-org-shell -y &>>$LOGFILE
+
+VALIDATE $? "Installing mongo client"
+
+mongo --host mongodb.joindevops.online </app/schema/user.js &>>$LOGFILE
+
+VALIDATE $? "loading user data into mongodb"
 
 
 
