@@ -65,7 +65,7 @@ echo "Description = Shipping Service" >> /etc/systemd/system/shipping.service
 echo "[Service]" >> /etc/systemd/system/shipping.service
 echo "User=roboshop" >> /etc/systemd/system/shipping.service
 echo "Environment=CART_ENDPOINT=cart.ravistarfuture.online:8080" >> /etc/systemd/system/shipping.service
-echo "Environment=DB_HOST=mysql.joindevops.online" >> /etc/systemd/system/shipping.service
+echo "Environment=DB_HOST=mysql.ravistarfuture.online" >> /etc/systemd/system/shipping.service
 echo "ExecStart=/bin/java -jar /app/shipping.jar" >> /etc/systemd/system/shipping.service
 echo "SyslogIdentifier=shipping" >> /etc/systemd/system/shipping.service
 
@@ -92,7 +92,7 @@ yum install mysql -y  &>>$LOGFILE
 
 VALIDATE $? "Installing MySQL client"
 
-mysql -h mysql.joindevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql  &>>$LOGFILE
+mysql -h mysql.ravistarfuture.online -uroot -pRoboShop@1 < /app/schema/shipping.sql  &>>$LOGFILE
 
 VALIDATE $? "Loaded countries and cities info"
 
