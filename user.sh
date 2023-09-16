@@ -47,6 +47,10 @@ curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGF
 
 VALIDATE $? "downloading user artifact"
 
+rm -fr /app
+
+rm -fr /tmp/user.zip
+
 cd /app &>>$LOGFILE
 
 VALIDATE $? "Moving into app directory"
@@ -65,8 +69,8 @@ echo "Description = User Service" >> /etc/systemd/system/user.service
 echo "[Service]" >> /etc/systemd/system/user.service
 echo "User=roboshop" >> /etc/systemd/system/user.service
 echo "Environment=MONGO=true" >> /etc/systemd/system/user.service
-echo "Environment=REDIS_HOST=redis.joindevops.online" >> /etc/systemd/system/user.service
-echo "Environment=MONGO_URL=\"mongodb://mongodb.joindevops.online:27017/users\"" >> /etc/systemd/system/user.service
+echo "Environment=REDIS_HOST=redis.ravistarfuture.online" >> /etc/systemd/system/user.service
+echo "Environment=MONGO_URL=\"mongodb://mongodb.ravistarfuture.online:27017/users\"" >> /etc/systemd/system/user.service
 echo "ExecStart=/bin/node /app/server.js" >> /etc/systemd/system/user.service
 
 echo "SyslogIdentifier=user" >> /etc/systemd/system/user.service
@@ -100,7 +104,7 @@ yum install mongodb-org-shell -y &>>$LOGFILE
 
 VALIDATE $? "Installing mongo client"
 
-mongo --host mongodb.joindevops.online </app/schema/user.js &>>$LOGFILE
+mongo --host mongodb.ravistarfuture.online </app/schema/user.js &>>$LOGFILE
 
 VALIDATE $? "loading user data into mongodb"
 
