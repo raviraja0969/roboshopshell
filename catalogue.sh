@@ -28,9 +28,9 @@ VALIDATE(){
 } 
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
 VALIDATE $? "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
-yum install nodejs -y
+yum install nodejs -y &>> $LOGFILE
 VALIDATE $? "yum install nodejs"
-useradd roboshop
+useradd roboshop &>> $LOGFILE
 VALIDATE $? "useradd roboshop"
 mkdir /app &>> $LOGFILE
 VALIDATE $? "/app created"
@@ -76,9 +76,9 @@ echo "enabled=1" >> /etc/yum.repos.d/mongo.repo
 yum install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "yum install mongodb-org-shell" 
 
-mongo --host mongodb.ravistarfuture.online </app/schema/catalogue.js
+mongo --host mongodb.ravistarfuture.online </app/schema/catalogue.js &>> $LOGFILE
 
-
+VALIDATE $? "mongo --host mongodb.ravistarfuture.online </app/schema/catalogue.js" 
 
 
 
