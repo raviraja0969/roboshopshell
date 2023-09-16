@@ -66,7 +66,7 @@ echo "[Service]" >> /etc/systemd/system/user.service
 echo "User=roboshop" >> /etc/systemd/system/user.service
 echo "Environment=MONGO=true" >> /etc/systemd/system/user.service
 echo "Environment=REDIS_HOST=redis.joindevops.online" >> /etc/systemd/system/user.service
-echo "Environment=MONGO_URL="mongodb://mongodb.joindevops.online:27017/users"" >> /etc/systemd/system/user.service
+echo "Environment=MONGO_URL=\"mongodb://mongodb.joindevops.online:27017/users\"" >> /etc/systemd/system/user.service
 echo "ExecStart=/bin/node /app/server.js" >> /etc/systemd/system/user.service
 
 echo "SyslogIdentifier=user" >> /etc/systemd/system/user.service
