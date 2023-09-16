@@ -35,6 +35,9 @@ yum install nodejs -y &>>$LOGFILE
 
 VALIDATE $? "Installing NodeJS"
 
+rm -fr /app
+
+rm -fr /tmp/user.zip
 #once the user is created, if you run this script 2nd time
 # this command will defnitely fail
 # IMPROVEMENT: first check the user already exist or not, if not exist then create
@@ -46,10 +49,6 @@ mkdir /app &>>$LOGFILE
 curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGFILE
 
 VALIDATE $? "downloading user artifact"
-
-rm -fr /app
-
-rm -fr /tmp/user.zip
 
 cd /app &>>$LOGFILE
 
