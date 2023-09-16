@@ -60,11 +60,11 @@ echo "Description = Payment Service" >> /etc/systemd/system/payment.service
 echo "[Service]" >> /etc/systemd/system/payment.service
 echo "User=root" >> /etc/systemd/system/payment.service
 echo "WorkingDirectory=/app" >> /etc/systemd/system/payment.service
-echo "Environment=CART_HOST=cart.joindevops.online" >> /etc/systemd/system/payment.service
+echo "Environment=CART_HOST=cart.ravistarfuture.online" >> /etc/systemd/system/payment.service
 echo "Environment=CART_PORT=8080" >> /etc/systemd/system/payment.service
-echo "Environment=USER_HOST=user.joindevops.online" >> /etc/systemd/system/payment.service
+echo "Environment=USER_HOST=user.ravistarfuture.online" >> /etc/systemd/system/payment.service
 echo "Environment=USER_PORT=8080" >> /etc/systemd/system/payment.service
-echo "Environment=AMQP_HOST=rabbitmq.joindevops.online" >> /etc/systemd/system/payment.service
+echo "Environment=AMQP_HOST=rabbitmq.ravistarfuture.online" >> /etc/systemd/system/payment.service
 echo "Environment=AMQP_USER=roboshop" >> /etc/systemd/system/payment.service
 echo "Environment=AMQP_PASS=roboshop123" >> /etc/systemd/system/payment.service
 echo "ExecStart=/usr/local/bin/uwsgi --ini payment.ini" >> /etc/systemd/system/payment.service
