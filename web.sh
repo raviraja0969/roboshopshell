@@ -59,9 +59,6 @@ VALIDATE $? "unzipping web artifact"
 
 rm -fr /etc/nginx/default.d/roboshop.conf
 
-
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf  &>>$LOGFILE
-
 echo "proxy_http_version 1.1;" >> /etc/nginx/default.d/roboshop.conf
 echo "location /images/ {" >> /etc/nginx/default.d/roboshop.conf
 echo "   expires 5s;" >> /etc/nginx/default.d/roboshop.conf
