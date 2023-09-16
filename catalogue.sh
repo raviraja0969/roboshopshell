@@ -32,6 +32,9 @@ yum install nodejs -y &>> $LOGFILE
 VALIDATE $? "yum install nodejs"
 useradd roboshop &>> $LOGFILE
 VALIDATE $? "useradd roboshop"
+rm -fr /app
+rm -fr /tmp/catalogue.zip
+
 mkdir /app &>> $LOGFILE
 VALIDATE $? "/app created"
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
