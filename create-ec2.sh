@@ -6,7 +6,7 @@ IMAGE_ID="ami-03265a0778a880afb"
 SECURITY_GROUP_ID="sg-01459a3ce99313402"
 for i in "${NAMES[@]}"
 do
-    if [$i == "mysql" || $i == "mongodb"]
+    if [ $i == "mysql" || $i == "mongodb" ]
     then
         INSTANCE_TYPE="t3.medium"
     else   
