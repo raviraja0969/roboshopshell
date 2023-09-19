@@ -5,6 +5,7 @@ INSTANCE_TYPE=""
 IMAGE_ID="ami-03265a0778a880afb"
 SECURITY_GROUP_ID="sg-01459a3ce99313402"
 DOMAIN_NAME="ravistarfuture.online"
+cmd=""
 for i in "${NAMES[@]}"
 do
     if [ $i == "mysql" || $i == "mongodb" ]
@@ -16,6 +17,7 @@ do
     echo "Creating $i instance"
     IP_ADDRESS=$(aws ec2 run-instances --image-id $IMAGE_ID --count 1 --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID --tag-specifications "ResourceType=instance,Tags=[{Key=webserver,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
 
+    cmd ="aws ec2 run-instances --image-id $IMAGE_ID --count 1 --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID --tag-specifications "ResourceType=instance,Tags=[{Key=webserver,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress'"
     echo "Created $i instance: $IP_ADDRESS"
 
      aws route53 change-resource-record-sets --hosted-zone-id Z051647517SIZ4RVTUOES --change-batch '
