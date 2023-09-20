@@ -18,11 +18,11 @@ do
     echo "Creating $i instance"
     IP_ADDRESS=$(aws ec2 run-instances --image-id $IMAGE_ID --count 1 --instance-type $INSTANCE_TYPE  --security-group-ids $SECURITY_GROUP_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r '.Instances[0].PrivateIpAddress')
 
-    cmd ="aws ec2 run-instances --image-id  ami-03265a0778a880afb --count 1 --instance-type t2.micro --security-group-ids sg-01459a3ce99313402 --tag-specifications \"ResourceType=instance,Tags=[{Key=Name,Value=$i}]\" | jq -r '.Instances[0].PrivateIpAddress'"
+    cmnd="aws ec2 run-instances --image-id  ami-03265a0778a880afb --count 1 --instance-type t2.micro --security-group-ids sg-01459a3ce99313402 --tag-specifications \"ResourceType=instance,Tags=[{Key=Name,Value=$i}]\" | jq -r '.Instances[0].PrivateIpAddress'"
     echo "Cmd is $cmnd"
     echo "Created $i instance: $IP_ADDRESS"
     val=$(aws route53 list-resource-record-sets --hosted-zone-id Z051647517SIZ4RVTUOES  --query "ResourceRecordSets[?Name == '$i.$DOMAIN_NAME.']" | grep Name | wc -l)
-    if [ $val gt 0 ]
+    if [ $val -gt 0 ]
     then
         ACTION="UPDATE"
     else    
