@@ -22,9 +22,9 @@ do
     echo "Cmd is $cmnd"
     echo "Created $i instance: $IP_ADDRESS"
     val=$(aws route53 list-resource-record-sets --hosted-zone-id Z051647517SIZ4RVTUOES  --query "ResourceRecordSets[?Name == '$i.$DOMAIN_NAME.']" | grep Name | wc -l)
-    if [ $val -gt 0 ]
+    if [ $val -gt 0 ];
     then
-        ACTION="UPDATE"
+        ACTION="UPSERT"
     else    
         ACTION="CREATE"
     fi
